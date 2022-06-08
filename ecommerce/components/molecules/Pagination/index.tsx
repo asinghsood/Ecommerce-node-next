@@ -49,6 +49,7 @@ const Pagination = (props: PaginationProps) => {
         className={classnames("pagination-item", {
           disabled: currentPage === 1,
         })}
+        data-testid="previous"
         onClick={onPrevious}
       >
         <div className="arrow left" />
@@ -82,6 +83,7 @@ const Pagination = (props: PaginationProps) => {
         className={classnames("pagination-item", {
           disabled: currentPage === lastPage,
         })}
+        data-testid="next"
         onClick={onNext}
       >
         <div className="arrow right" />

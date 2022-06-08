@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['picsum.photos']
+    domains: ['picsum.photos', 'dummyjson.com']
   },
   compiler: {
     // Enables the styled-components SWC transform

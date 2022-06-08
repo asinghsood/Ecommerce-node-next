@@ -4,6 +4,7 @@ import { Container, UlList, LICard } from "../../molecules/Card/Card.style";
 import Pagination from "../../molecules/Pagination";
 import Notification from "../../molecules/Notification";
 import AppContext from "../../../AppContext";
+import Typography from "../../atoms/Typography";
 
 interface ProductItem {
   id: number;
@@ -27,8 +28,6 @@ const testList = [
     backgroundColor: "#5cb85c",
   },
 ];
-
-const image = "https://picsum.photos/200/300";
 
 const ProductListing = () => {
   const value = useContext(AppContext);
@@ -71,12 +70,10 @@ const ProductListing = () => {
       const res = await fetch(url);
       const data = await res.json();
       const { pageSize, totalProductSize, totalCartItem } = data;
-      setTimeout(() => {
-        setProducts(data.products);
-        SetPaginationData({ pageSize, totalProductSize });
-        setSpinner(false);
-        setCount(totalCartItem);
-      }, 3000);
+      setProducts(data.products);
+      SetPaginationData({ pageSize, totalProductSize });
+      setSpinner(false);
+      setCount(totalCartItem);
     } catch (err) {
       console.log(err);
     }
@@ -86,7 +83,7 @@ const ProductListing = () => {
     callAPI(currentPage);
   }, [currentPage]);
 
-  const addCartButton = async (productId: number) => {
+const addCartButton = async (productId: number) => {
     if (productId) {
       setSpinner(true);
       try {
@@ -123,11 +120,17 @@ const ProductListing = () => {
         onPageChange={(page) => setCurrentPage(Number(page))}
       />
       <UlList>
-        {products.map((item: ProductItem) => (
-          <LICard key={item.id}>
-            <Card image={image} addCartButton={addCartButton} id={item.id} item={item} />
-          </LICard>
-        ))}
+        {products && products.length ? (
+          products.map((item: ProductItem) => (
+            <LICard key={item.id}>
+              <Card addCartButton={addCartButton} id={item.id} item={item} />
+            </LICard>
+          ))
+        ) : (
+          <Typography htmlTag="h3" cssStyle="H3_REG" margin="20px 0">
+            No Items
+          </Typography>
+        )}
       </UlList>
       <Pagination
         className="pagination-bar"

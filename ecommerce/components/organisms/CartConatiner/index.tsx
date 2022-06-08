@@ -54,11 +54,9 @@ const CartConatiner = () => {
     try {
       const res = await fetch(url);
       const data = await res.json();
-      setTimeout(() => {
         setCartData(data);
         setSpinner(false);
         setCount(data.length)
-      }, 2000);
     } catch (err) {
       console.log(err);
     }

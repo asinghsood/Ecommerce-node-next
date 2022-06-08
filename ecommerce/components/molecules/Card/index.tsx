@@ -17,19 +17,18 @@ interface ProductItem {
 }
 
 type Props = {
-  image?: string;
   addCartButton: (id: number) => void;
   id: number;
   item: ProductItem
 };
 
 const Card = (props: Props) => {
-  const { image, addCartButton, id, item } = props;
+  const { addCartButton, id, item } = props;
 
   return (
     <>
       <div className="card-image">
-        <Image src={image} alt="logo" width="300px" height="300px" />
+        <Image src={item.thumbnail} alt="logo" width="300px" height="300px" />
       </div>
       <CardCotainer>
         <CardContent>

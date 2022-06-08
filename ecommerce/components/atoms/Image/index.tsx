@@ -1,25 +1,24 @@
-import { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
-import Image, { ImageLoader } from 'next/image';
+import Image, { ImageLoader } from "next/image";
 
-type ImageProps = DetailedHTMLProps<
-    ImgHTMLAttributes<HTMLImageElement>,
-    HTMLImageElement
-> & {
-    imageLoader?: ImageLoader;
+interface ImageProps {
+  src: string;
+  alt: string;
+  imageLoader?: ImageLoader;
+  width: string;
+  height: string;
 }
 
 const ImageComponent = (props: ImageProps) => {
-    const { src = '', alt, imageLoader, width, height } = props;
-    return (
-        <Image
-            loader={imageLoader}
-            src={src}
-            alt={alt}
-            width={width}
-            height={height}
-        />
-    )
+  const { src, alt, imageLoader, width, height } = props;
+  return (
+    <Image
+      loader={imageLoader}
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+    />
+  );
 };
 
-
-export default ImageComponent
+export default ImageComponent;

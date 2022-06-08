@@ -8,7 +8,6 @@ import {
 } from "./Header.style";
 import Image from "../../atoms/Image";
 import Link from "next/link";
-import myLogo from "../../../styles/images/android-chrome-192x192.png";
 import { CartIcon, CheckoutIcon } from "../../atoms/Icons";
 import ThemeToggle from "../../molecules/ThemeToggle";
 import AppContext from "../../../AppContext";
@@ -26,7 +25,7 @@ const Header = (props: HeaderProps) => {
     <StyledHeader>
       <Link href="/">
         <LogoLink>
-          <Image src={myLogo.src} alt="logo" width="40px" height="40px" />
+          <Image src="/android-chrome-192x192.png" alt="logo" width="40px" height="40px" />
           <IconText fontSize={"28px"} marginLeft={"30px"}>
             Jabong
           </IconText>
