@@ -63,7 +63,7 @@ const ProductListing = () => {
     }
   }, [showNotification]);
 
-  const callAPI = async (pageNumber: number) => {
+  const getProductListAPI = async (pageNumber: number) => {
     setSpinner(true);
     const url = `http://localhost:3003/api/products/${pageNumber}`;
     try {
@@ -80,7 +80,7 @@ const ProductListing = () => {
   };
 
   useMemo(() => {
-    callAPI(currentPage);
+    getProductListAPI(currentPage);
   }, [currentPage]);
 
 const addCartButton = async (productId: number) => {

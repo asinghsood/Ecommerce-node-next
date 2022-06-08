@@ -33,6 +33,12 @@ const PARA_BOLD = `
     font-weight: 700;
 `;
 
+const PARA_STRIKE = `
+    ${PARA}
+    font-weight: 700;
+    text-decoration: line-through;
+`;
+
 
 const H1_REG = `
     font-size: ${pxtoRex(28)};
@@ -48,5 +54,6 @@ export const typography = {
     H3_REG,
     PARA_BOLD,
     H1_REG,
-    PARA
+    PARA,
+    PARA_STRIKE
 }

@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   return (
     <div id="productpage">
       <Head>
-        <title>Jabong</title>
+        <title>Cartify</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>

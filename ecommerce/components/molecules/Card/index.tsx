@@ -38,7 +38,8 @@ const Card = (props: Props) => {
            {item.category} - {item.brand}
           </Typography>
           <Typography htmlTag="p" cssStyle="PARA" margin="8px 0">
-            $ {item.price}
+            ${item.price}{' '}
+            <span>{item.discountPercentage.toFixed()}% OFF</span>
           </Typography>
         </CardContent>
       </CardCotainer>

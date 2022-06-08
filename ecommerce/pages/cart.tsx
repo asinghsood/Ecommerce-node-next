@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 
 /* Dynamic imports of components for Chunking */
 const CartConatiner = dynamic(() => import("../components/organisms/CartConatiner"), {
-  loading: () => <p>Loading</p>,
+  loading: () => <p>Loading...</p>,
   ssr: false,
 })
 

@@ -6,7 +6,7 @@ describe("Header", () => {
   it("should render the Button", () => {
     render(<Header />);
 
-    const buttonText = screen.getByText(/Jabong/i);
+    const buttonText = screen.getByText(/Cartify/i);
     expect(buttonText).toBeInTheDocument();
   });
 });

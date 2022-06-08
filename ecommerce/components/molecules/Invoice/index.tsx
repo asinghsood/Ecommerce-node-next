@@ -37,14 +37,14 @@ const Invoice = ({ cartData }: ProductList) => {
           discountPercentage,
         }: { price: number; discountPercentage: number }
       ) => {
-        let discountPerc = discountPercentage;
-        let discount = price - (price * ((100 - discountPerc) / 100));
+        let discount = price - (price * ((100 - discountPercentage) / 100));
         return sum + discount;
       },
       0
     );
     return totalDiscount.toFixed(2) || 0;
   };
+
   const getTotalAmount = () => {
     const totalMRP = getTotalMRP() as number;
     const totalDiscount = getDiscountOnMRP() as number;
