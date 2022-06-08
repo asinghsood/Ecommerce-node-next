@@ -26,7 +26,7 @@ class MyDocument extends Document<DocumentProps> {
   render() {
     const { styleTags } = this.props;
     return (
-      <Html>
+      <Html lang="en">
         <Head>{styleTags}</Head>
         <body>
           <Main />
