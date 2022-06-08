@@ -21,7 +21,7 @@ const Header = (props: HeaderProps) => {
   const { toggleTheme } = props;
   const value = useContext(AppContext);
   const { cartItemCount } = value.state;
-
+  {console.log({cartItemCount})}
   return (
     <StyledHeader>
       <Link href="/">
@@ -49,7 +49,7 @@ const Header = (props: HeaderProps) => {
             <CartIcon />
             <IconText>
               Cart
-              <CartTotalCount>{cartItemCount}</CartTotalCount>
+             {cartItemCount > 0 ? <CartTotalCount>{cartItemCount}</CartTotalCount>:<></>}
             </IconText>
           </CartTextStyle>
         </Link>

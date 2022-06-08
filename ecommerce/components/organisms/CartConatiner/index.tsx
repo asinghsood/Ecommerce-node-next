@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import Image from "../../atoms/Image";
-import { Wrapper, TotalAmountContainer, TotalAmount } from "./CardConatiner.style";
+import { Wrapper } from "./CardConatiner.style";
 import Typography from "../../atoms/Typography";
 import {
   Container,
@@ -10,6 +10,7 @@ import {
   CardContent,
 } from "../../molecules/Card/Card.style";
 import AppContext from "../../../AppContext";
+import Invoice from '../../molecules/Invoice';
 
 const image = "https://picsum.photos/200/300";
 
@@ -100,31 +101,7 @@ const CartConatiner = () => {
             )): <Typography htmlTag="h3" cssStyle="H3_REG" margin="20px 0">No Items added to Cart</Typography>}
           </UlList>
         </Container>
-        <TotalAmountContainer>
-          <Typography htmlTag="p" cssStyle="PARA" margin="8px 0">
-            PRICE DETAILS ({cartData.length || 0} items)
-          </Typography>
-          <table>
-            <tbody>
-              <tr>
-                <th scope="row">Total MRP:</th>
-                <td>300</td>
-              </tr>
-              <tr>
-                <th scope="row">Discount on MRP:</th>
-                <td>-2000</td>
-              </tr>
-              <tr>
-                <th scope="row">Coupon:</th>
-                <td>ABCDEFG</td>
-              </tr>
-              <TotalAmount>
-                <th scope="row">Total Amount:</th>
-                <td>&#8377; 200000</td>
-              </TotalAmount>
-            </tbody>
-          </table>
-        </TotalAmountContainer>
+       {cartData?.length ?<Invoice cartData={cartData}/> :<></>}
       </Wrapper>
     </div>
   );
