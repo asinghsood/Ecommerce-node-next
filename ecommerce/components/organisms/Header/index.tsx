@@ -26,13 +26,13 @@ const Header = (props: HeaderProps) => {
       <Link href="/">
         <LogoLink>
           <Image
-            src="/android-chrome-192x192.png"
+            src="/logo4.png"
             alt="logo"
-            width="40px"
-            height="40px"
+            width="60px"
+            height="60px"
           />
           <IconText fontSize={"28px"} marginLeft={"30px"}>
-            Jabong
+           Cartify
           </IconText>
         </LogoLink>
       </Link>
