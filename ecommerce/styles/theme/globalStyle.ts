@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import {ThemeObject} from '../types'
+import { ThemeObject } from "../types";
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -115,7 +115,7 @@ export const GlobalStyles = createGlobalStyle`
     height: 32px;
     text-align: center;
     margin: auto 4px;
-    color: rgba(0, 0, 0, 0.87);
+    color: ${({ theme }: ThemeObject) => theme.text};
     display: flex;
     box-sizing: border-box;
     align-items: center;
@@ -130,11 +130,12 @@ export const GlobalStyles = createGlobalStyle`
     cursor: default;
 }
 .pagination-container .pagination-item:hover {
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: ${({ theme }: ThemeObject) => theme.selected};
     cursor: pointer;
 }
 .pagination-container .pagination-item.selected {
-    background-color: rgba(0, 0, 0, 0.08);
+    /* background-color: rgba(0, 0, 0, 0.08); */
+    background-color: ${({ theme }: ThemeObject) => theme.selected};
 }
 .pagination-container .pagination-item .arrow::before {
     position: relative;
@@ -145,8 +146,8 @@ export const GlobalStyles = createGlobalStyle`
     display: inline-block;
     width: 0.4em;
     height: 0.4em;
-    border-right: 0.12em solid rgba(0, 0, 0, 0.87);
-    border-top: 0.12em solid rgba(0, 0, 0, 0.87);
+    border-right: 0.12em solid ${({ theme }: ThemeObject) => theme.text};
+    border-top: 0.12em solid  ${({ theme }: ThemeObject) => theme.text};
 }
 .pagination-container .pagination-item .arrow.left {
     transform: rotate(-135deg) translate(-50%);
@@ -158,12 +159,11 @@ export const GlobalStyles = createGlobalStyle`
     pointer-events: none;
 }
 .pagination-container .pagination-item.disabled .arrow::before {
-    border-right: 0.12em solid rgba(0, 0, 0, 0.43);
-    border-top: 0.12em solid rgba(0, 0, 0, 0.43);
+    border-right: 0.12em solid ${({ theme }: ThemeObject) => theme.disabled};
+    border-top: 0.12em solid ${({ theme }: ThemeObject) => theme.disabled};
 }
 .pagination-container .pagination-item.disabled:hover {
     background-color: transparent;
     cursor: default;
 }
-
 `;

@@ -7,6 +7,9 @@ const H3_REG = `
     line-height: 32px;
     font-weight: 400;
     letter-spacing: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 `;
 
 const PARA = `
@@ -15,6 +18,9 @@ const PARA = `
     font-weight: 400;
     letter-spacing: 0;
     text-transform: capitalize;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 
     span {
         color: #f16565;
@@ -33,6 +39,9 @@ const H1_REG = `
     line-height: 1.15;
     font-weight: 400;
     letter-spacing: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 `;
 
 export const typography = {

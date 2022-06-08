@@ -23,7 +23,7 @@ type Props = {
 
 const Card = (props: Props) => {
   const { addCartButton, item } = props;
-console.log({item})
+  
   return (
     <>
       <div className="card-image">

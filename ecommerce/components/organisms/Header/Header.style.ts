@@ -22,18 +22,18 @@ export const StyledHeader = styled.header`
       color: ${({ theme }) => theme.background};
       svg {
         fill: ${({ theme }) => theme.background};
-        }
+      }
     }
   }
 `;
 
 export const RightComponent = styled.div`
-      display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 `;
 
 export const LogoLink = styled.a(
-    ({ theme }) => `
+  ({ theme }) => `
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -44,22 +44,35 @@ export const LogoLink = styled.a(
             color: ${theme.text};
         }
     }
-    `,
+    `
 );
 
-export const IconText = styled.span<{ fontSize?: string, marginLeft?: string }>(
-    ({ fontSize, marginLeft }) => `
-        font-size: ${fontSize || '18px'};
-        margin-left: ${marginLeft || '4px'};
-    `,
+export const IconText = styled.span<{ fontSize?: string; marginLeft?: string }>(
+  ({ fontSize, marginLeft }) => `
+        font-size: ${fontSize || "18px"};
+        margin-left: ${marginLeft || "4px"};
+
+    `
+);
+
+export const CartTextStyle = styled.a(
+  ({ theme }) => `
+  &:hover {
+    sup {
+      background: ${theme.background};
+      color: ${theme.text};
+    }
+  }
+`
 );
 
 export const CartTotalCount = styled.sup(
-  ({theme}) =>`
+  ({ theme }) => `
   background: ${theme.text};
-  color: #fff;
+  color:${theme.background};
   border-radius: 50%;
   height: 25px;
   width: 25px;
   display: inline-block;
-  `);
+  `
+);

@@ -1,10 +1,11 @@
-import {useContext} from 'react';
+import { useContext } from "react";
 import {
   StyledHeader,
   RightComponent,
   LogoLink,
   IconText,
-  CartTotalCount
+  CartTotalCount,
+  CartTextStyle,
 } from "./Header.style";
 import Image from "../../atoms/Image";
 import Link from "next/link";
@@ -25,7 +26,12 @@ const Header = (props: HeaderProps) => {
     <StyledHeader>
       <Link href="/">
         <LogoLink>
-          <Image src="/android-chrome-192x192.png" alt="logo" width="40px" height="40px" />
+          <Image
+            src="/android-chrome-192x192.png"
+            alt="logo"
+            width="40px"
+            height="40px"
+          />
           <IconText fontSize={"28px"} marginLeft={"30px"}>
             Jabong
           </IconText>
@@ -33,11 +39,13 @@ const Header = (props: HeaderProps) => {
       </Link>
       <RightComponent>
         <Link href="/cart">
-          <a>
+          <CartTextStyle>
             <CartIcon />
-            <IconText>Cart</IconText>
-            <CartTotalCount>{cartItemCount}</CartTotalCount>
-          </a>
+            <IconText>
+              Cart
+              <CartTotalCount>{cartItemCount}</CartTotalCount>
+            </IconText>
+          </CartTextStyle>
         </Link>
         <Link href="/">
           <a>
