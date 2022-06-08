@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const product_1 = require("../../data/product");
+const cart_1 = require("./cart");
 const router = express_1.default.Router();
 router.get('/all', (_, res) => {
     res.status(200).json(product_1.productData);
@@ -19,7 +20,8 @@ router.get('/:id', (req, res) => {
         const productJson = {
             products: product,
             totalProductSize: product_1.productData.length,
-            pageSize: page_max
+            pageSize: page_max,
+            totalCartItem: cart_1.cartItem.length
         };
         res.status(200).json(productJson);
     }

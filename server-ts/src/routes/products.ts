@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import {productData} from '../../data/product';
+import {cartItem} from './cart';
 
 const router = express.Router();
 
@@ -18,7 +19,8 @@ router.get('/:id', (req: Request, res: Response) => {
     const productJson = {
       products: product,
       totalProductSize: productData.length,
-      pageSize: page_max
+      pageSize: page_max,
+      totalCartItem: cartItem.length
     }
     res.status(200).json(productJson);
   } catch (error) {
