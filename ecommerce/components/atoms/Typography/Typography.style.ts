@@ -1,16 +1,21 @@
 import styled from "styled-components";
-import {ThemeObject} from '../../../styles/types'
 
-interface StylePropsType extends ThemeObject {
-    styleType: string;
-    margin?: string;
+interface StylePropsType {
+  styleType: string;
+  margin?: string;
+  theme: Map
 }
 
-export const Text = styled.p(
-    (props: StylePropsType) => `
+interface Map {
+    [key: string]: string | undefined
+  }
+
+
+export const Text = styled.p((props: StylePropsType) => {
+    const { theme, styleType } = props;
+  return `
         color: ${props.theme.text};
         margin: ${props.margin};
-        // eslint-disable-next-line @typescript-eslint
-        ${props.theme?.[props?.styleType]};
-    `,
-);
+        ${theme[styleType] || styleType};
+    `;
+});

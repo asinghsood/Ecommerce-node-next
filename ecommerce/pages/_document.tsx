@@ -1,37 +1,38 @@
-import Document, { Head, Main, NextScript } from "next/document";
-// Import styled components ServerStyleSheet
+import Document, {
+  Head,
+  Main,
+  NextScript,
+  Html,
+  DocumentContext,
+} from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
-class MyDocument extends Document {
-  static async getInitialProps({ renderPage }) {
-    // Step 1: Create an instance of ServerStyleSheet
+interface DocumentProps {
+  styleTags: React.ReactElement<{}, string | React.JSXElementConstructor<any>>[]
+}
+
+class MyDocument extends Document<DocumentProps> {
+  static async getInitialProps({ renderPage }: DocumentContext) {
     const sheet = new ServerStyleSheet();
 
-    // Step 2: Retrieve styles from components in the page
     const page = await renderPage(
       (App) => (props) => sheet.collectStyles(<App {...props} />)
     );
 
-    // Step 3: Extract the styles as <style> tags
     const styleTags = sheet.getStyleElement();
-
-    // Step 4: Pass styleTags as a prop
     return { ...page, styleTags };
   }
 
   render() {
+    const { styleTags } = this.props;
     return (
-      <html>
-        <Head>
-          <title>My page</title>
-          {/* Step 5: Output the styles in the head  */}
-          {this.props.styleTags}
-        </Head>
+      <Html>
+        <Head>{styleTags}</Head>
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

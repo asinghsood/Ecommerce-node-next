@@ -53,3 +53,13 @@ export const IconText = styled.span<{ fontSize?: string, marginLeft?: string }>(
         margin-left: ${marginLeft || '4px'};
     `,
 );
+
+export const CartTotalCount = styled.sup(
+  ({theme}) =>`
+  background: ${theme.text};
+  color: #fff;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  `);

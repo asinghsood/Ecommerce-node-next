@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Image from "../../atoms/Image";
 import { Wrapper, TotalAmountContainer, TotalAmount } from "./CardConatiner.style";
 import Typography from "../../atoms/Typography";
@@ -9,19 +9,56 @@ import {
   CardCotainer,
   CardContent,
 } from "../../molecules/Card/Card.style";
+import AppContext from "../../../AppContext";
 
 const image = "https://picsum.photos/200/300";
 
+interface ProductItemType {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: string[];
+}
+
+
 const CartConatiner = () => {
+  const value = useContext(AppContext);
+  const { setCount } = value;
   const [cartData, setCartData] = useState([]);
+  const [spinner, setSpinner] = useState(false);
+
+  useEffect(() => {
+    const loaderId = document.querySelector<HTMLElement>("#loader");
+    const cartPage = document.querySelector<HTMLElement>("#cartContainer");
+    if (loaderId && cartPage) {
+      if (!spinner) {
+        loaderId.style.display = "none";
+        cartPage.style.opacity = "";
+      } else {
+        loaderId.style.display = "block";
+        cartPage.style.opacity = "0.3";
+      }
+    }
+  }, [spinner]);
 
   const fetchCartData = async () => {
+    setSpinner(true);
     const url = `http://localhost:3003/api/cart/`;
     try {
       const res = await fetch(url);
       const data = await res.json();
-      console.log(data);
-      setCartData(data);
+      setTimeout(() => {
+        setCartData(data);
+        setSpinner(false);
+        setCount(data.length)
+      }, 2000);
     } catch (err) {
       console.log(err);
     }
@@ -39,7 +76,8 @@ const CartConatiner = () => {
       <Wrapper>
         <Container isCartPage>
           <UlList isLiScrollable>
-            {cartData.map((item) => (
+            {cartData.length ?
+            cartData.map((item: ProductItemType) => (
               <LICard key={item.id} liWidth="100%" isCartPage>
                 <div className="card-image">
                   <Image src={image} alt="logo" width="100px" height="100px" />
@@ -47,7 +85,7 @@ const CartConatiner = () => {
                 <CardCotainer isCartPage>
                   <CardContent>
                     <Typography htmlTag="p" cssStyle="PARA" margin="8px 0">
-                      Here's some content
+                      {item.title}
                     </Typography>
                     <Typography htmlTag="p" cssStyle="PARA">
                       RS.200
@@ -55,7 +93,7 @@ const CartConatiner = () => {
                   </CardContent>
                 </CardCotainer>
               </LICard>
-            ))}
+            )): <Typography htmlTag="h3" cssStyle="H3_REG" margin="20px 0">No Items added to Cart</Typography>}
           </UlList>
         </Container>
         <TotalAmountContainer>

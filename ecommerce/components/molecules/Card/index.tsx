@@ -2,15 +2,29 @@ import { CardCotainer, CardContent, StyledFooter } from "./Card.style";
 import Typography from "../../atoms/Typography";
 import Image from "../../atoms/Image";
 import Button from "../../atoms/Button";
+interface ProductItem {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: string[];
+}
 
 type Props = {
   image?: string;
   addCartButton: (id: number) => void;
   id: number;
+  item: ProductItem
 };
 
 const Card = (props: Props) => {
-  const { image, addCartButton, id } = props;
+  const { image, addCartButton, id, item } = props;
 
   return (
     <>
@@ -20,7 +34,7 @@ const Card = (props: Props) => {
       <CardCotainer>
         <CardContent>
           <Typography htmlTag="p" cssStyle="PARA" margin="8px 0">
-            Here's some content {id}
+            {item.title} {id}
           </Typography>
           <Typography htmlTag="p" cssStyle="PARA">
             RS.200
@@ -28,7 +42,6 @@ const Card = (props: Props) => {
         </CardContent>
       </CardCotainer>
       <StyledFooter>
-        {/* <Link>Add to cart</Link> */}
         <Button onClick={() => addCartButton(id)}>Add to cart</Button>
       </StyledFooter>
     </>

@@ -1,27 +1,35 @@
-import { StyledHeader, RightComponent, LogoLink, IconText } from './Header.style';
-import Image from '../../atoms/Image';
+import {useContext} from 'react';
+import {
+  StyledHeader,
+  RightComponent,
+  LogoLink,
+  IconText,
+  CartTotalCount
+} from "./Header.style";
+import Image from "../../atoms/Image";
 import Link from "next/link";
-import myLogo from '../../../styles/images/android-chrome-192x192.png';
-import { CartIcon, CheckoutIcon } from '../../atoms/Icons';
-import ThemeToggle from '../../molecules/ThemeToggle'
+import myLogo from "../../../styles/images/android-chrome-192x192.png";
+import { CartIcon, CheckoutIcon } from "../../atoms/Icons";
+import ThemeToggle from "../../molecules/ThemeToggle";
+import AppContext from "../../../AppContext";
 
 type HeaderProps = {
-  toggleTheme?: () => void
-}
+  toggleTheme?: () => void;
+};
 
 const Header = (props: HeaderProps) => {
-  const {toggleTheme} = props;
+  const { toggleTheme } = props;
+  const value = useContext(AppContext);
+  const { cartItemCount } = value.state;
+
   return (
     <StyledHeader>
       <Link href="/">
         <LogoLink>
-          <Image
-            src={myLogo.src}
-            alt="logo"
-            width="40px"
-            height="40px"
-          />
-          <IconText fontSize={'28px'} marginLeft={'30px'}>Jabong</IconText>
+          <Image src={myLogo.src} alt="logo" width="40px" height="40px" />
+          <IconText fontSize={"28px"} marginLeft={"30px"}>
+            Jabong
+          </IconText>
         </LogoLink>
       </Link>
       <RightComponent>
@@ -29,6 +37,7 @@ const Header = (props: HeaderProps) => {
           <a>
             <CartIcon />
             <IconText>Cart</IconText>
+            <CartTotalCount>{cartItemCount}</CartTotalCount>
           </a>
         </Link>
         <Link href="/">
@@ -37,7 +46,7 @@ const Header = (props: HeaderProps) => {
             <IconText>Checkout</IconText>
           </a>
         </Link>
-      <ThemeToggle toggleTheme={toggleTheme} />
+        <ThemeToggle toggleTheme={toggleTheme} />
       </RightComponent>
     </StyledHeader>
   );

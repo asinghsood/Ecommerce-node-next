@@ -5,7 +5,7 @@ import CartConatiner from "../components/organisms/CartConatiner";
 
 const Cart: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="cartContainer">
       <Head>
         <title>Cart</title>
         <link rel="icon" href="/favicon.ico" />

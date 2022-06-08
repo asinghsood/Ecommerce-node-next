@@ -5,5 +5,6 @@ export interface ThemeObject {
         toggleBorder: string;
         background: string;
         H3_REG: string;
+        styleType: string;
     }
 }

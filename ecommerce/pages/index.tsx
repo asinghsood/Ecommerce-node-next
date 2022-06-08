@@ -5,7 +5,7 @@ import ProductListing from "../components/organisms/ProductListing";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div id="productpage">
       <Head>
         <title>Jabong</title>
         <link rel="icon" href="/favicon.ico" />
