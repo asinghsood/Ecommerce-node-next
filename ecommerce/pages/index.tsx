@@ -1,7 +1,12 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-// import Card from './components/molecules/Card';
-import ProductListing from "../components/organisms/ProductListing";
+// dynamic importing of components
+import dynamic from 'next/dynamic'
+
+const ProductListing = dynamic(() => import("../components/organisms/ProductListing"), {
+  loading: () => <p>Loading</p>,
+  ssr: false,
+})
 
 const Home: NextPage = () => {
   return (

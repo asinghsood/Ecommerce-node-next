@@ -1,7 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import CartConatiner from "../components/organisms/CartConatiner";
+// dynamic importing of components
+import dynamic from 'next/dynamic'
+
+const CartConatiner = dynamic(() => import("../components/organisms/CartConatiner"), {
+  loading: () => <p>Loading</p>,
+  ssr: false,
+})
 
 const Cart: NextPage = () => {
   return (
