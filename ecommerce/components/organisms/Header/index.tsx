@@ -38,6 +38,12 @@ const Header = (props: HeaderProps) => {
         </LogoLink>
       </Link>
       <RightComponent>
+      <Link href="/">
+          <a>
+            <CheckoutIcon />
+            <IconText>Shop</IconText>
+          </a>
+        </Link>
         <Link href="/cart">
           <CartTextStyle>
             <CartIcon />
@@ -46,12 +52,6 @@ const Header = (props: HeaderProps) => {
               <CartTotalCount>{cartItemCount}</CartTotalCount>
             </IconText>
           </CartTextStyle>
-        </Link>
-        <Link href="/">
-          <a>
-            <CheckoutIcon />
-            <IconText>Checkout</IconText>
-          </a>
         </Link>
         <ThemeToggle toggleTheme={toggleTheme} />
       </RightComponent>
