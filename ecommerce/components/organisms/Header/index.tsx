@@ -21,7 +21,6 @@ const Header = (props: HeaderProps) => {
   const { toggleTheme } = props;
   const value = useContext(AppContext);
   const { cartItemCount } = value.state;
-  {console.log({cartItemCount})}
   return (
     <StyledHeader>
       <Link href="/">

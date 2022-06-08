@@ -22,5 +22,9 @@ export const TotalAmount = styled.tr(
   ({theme}) => `
   background: ${theme.text};
   color: ${theme.background};
+
+  th, td {
+      padding: 5px 10px;
+  }
   `
 );

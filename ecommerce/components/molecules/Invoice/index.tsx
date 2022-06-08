@@ -19,6 +19,38 @@ export interface ProductList {
 }
 
 const Invoice = ({ cartData }: ProductList) => {
+  const getTotalMRP = () => {
+    let total;
+    total = cartData.reduce(
+      (sum, { price }: { price: number }) => sum + price,
+      0
+    );
+    return total.toFixed(2) || 0;
+  };
+  const getDiscountOnMRP = () => {
+    let totalDiscount;
+    totalDiscount = cartData.reduce(
+      (
+        sum,
+        {
+          price,
+          discountPercentage,
+        }: { price: number; discountPercentage: number }
+      ) => {
+        let discountPerc = discountPercentage;
+        let discount = price - (price * ((100 - discountPerc) / 100));
+        return sum + discount;
+      },
+      0
+    );
+    return totalDiscount.toFixed(2) || 0;
+  };
+  const getTotalAmount = () => {
+    const totalMRP = getTotalMRP() as number;
+    const totalDiscount = getDiscountOnMRP() as number;
+    const totalAmount = (totalMRP - totalDiscount) +10
+    return totalAmount.toFixed(2) || 0; 
+  }
   return (
     <TotalAmountContainer>
       <Typography htmlTag="p" cssStyle="PARA" margin="8px 0">
@@ -28,19 +60,23 @@ const Invoice = ({ cartData }: ProductList) => {
         <tbody>
           <tr>
             <th scope="row">Total MRP:</th>
-            <td>300</td>
+            <td>{getTotalMRP()}</td>
           </tr>
           <tr>
             <th scope="row">Discount on MRP:</th>
-            <td>-2000</td>
+            <td>{getDiscountOnMRP()}</td>
           </tr>
           <tr>
             <th scope="row">Coupon:</th>
-            <td>ABCDEFG</td>
+            <td>SPRING_SALE</td>
+          </tr>
+          <tr>
+            <th scope="row">Conevenience Fee</th>
+            <td>$10</td>
           </tr>
           <TotalAmount>
             <th scope="row">Total Amount:</th>
-            <td>$ 200000</td>
+            <td>${getTotalAmount()}</td>
           </TotalAmount>
         </tbody>
       </table>
