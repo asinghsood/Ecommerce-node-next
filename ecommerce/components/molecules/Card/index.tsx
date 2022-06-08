@@ -18,13 +18,12 @@ interface ProductItem {
 
 type Props = {
   addCartButton: (id: number) => void;
-  id: number;
   item: ProductItem
 };
 
 const Card = (props: Props) => {
-  const { addCartButton, id, item } = props;
-
+  const { addCartButton, item } = props;
+console.log({item})
   return (
     <>
       <div className="card-image">
@@ -32,16 +31,19 @@ const Card = (props: Props) => {
       </div>
       <CardCotainer>
         <CardContent>
-          <Typography htmlTag="p" cssStyle="PARA" margin="8px 0">
-            {item.title} {id}
+          <Typography htmlTag="p" cssStyle="PARA_BOLD" >
+            {item.title}
           </Typography>
           <Typography htmlTag="p" cssStyle="PARA">
-            RS.200
+           {item.category} - {item.brand}
+          </Typography>
+          <Typography htmlTag="p" cssStyle="PARA" margin="8px 0">
+            $ {item.price}
           </Typography>
         </CardContent>
       </CardCotainer>
       <StyledFooter>
-        <Button onClick={() => addCartButton(id)}>Add to cart</Button>
+        <Button onClick={() => addCartButton(item.id)}>Add to cart</Button>
       </StyledFooter>
     </>
   );

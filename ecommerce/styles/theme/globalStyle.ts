@@ -107,6 +107,7 @@ export const GlobalStyles = createGlobalStyle`
 
 .pagination-container {
     display: flex;
+    justify-content: center;
     list-style-type: none;
 }
 .pagination-container .pagination-item {

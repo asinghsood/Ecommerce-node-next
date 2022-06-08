@@ -3,7 +3,9 @@ export const lightTheme = {
   text: '#004A7C',
   toggleBorder: '#005691',
   background: '#FAFAFA',
-  primary: '#F85F73'
+  primary: '#F85F73',
+  boxShadow: '#00497a45'
+
 }
 
 export const darkTheme = {
@@ -11,5 +13,7 @@ export const darkTheme = {
   text: '#00ADB5',
   toggleBorder: '#EEEEEE',
   background: '#393E46',
-  primary: '#F85F73'
+  primary: '#F85F73',
+  boxShadow: 'rgba(0,173,181,0.27)'
 }
+

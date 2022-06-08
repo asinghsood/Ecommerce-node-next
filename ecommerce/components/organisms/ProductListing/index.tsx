@@ -123,7 +123,7 @@ const addCartButton = async (productId: number) => {
         {products && products.length ? (
           products.map((item: ProductItem) => (
             <LICard key={item.id}>
-              <Card addCartButton={addCartButton} id={item.id} item={item} />
+              <Card addCartButton={addCartButton} key={item.id} item={item} />
             </LICard>
           ))
         ) : (

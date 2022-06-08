@@ -77,16 +77,22 @@ const CartConatiner = () => {
             {cartData.length ?
             cartData.map((item: ProductItemType) => (
               <LICard key={item.id} liWidth="100%" isCartPage>
-                <div className="card-image">
-                  <Image src={image} alt="logo" width="100px" height="100px" />
+                <div>
+                  <Image src={item.thumbnail} alt="logo" width="100px" height="100px" />
                 </div>
                 <CardCotainer isCartPage>
                   <CardContent>
-                    <Typography htmlTag="p" cssStyle="PARA" margin="8px 0">
+                    <Typography htmlTag="p" cssStyle="PARA_BOLD" margin="8px 0">
                       {item.title}
                     </Typography>
                     <Typography htmlTag="p" cssStyle="PARA">
-                      RS.200
+                      Sold by: {item.brand}
+                    </Typography>
+                    <Typography htmlTag="p" cssStyle="PARA">
+                     {item.category}
+                    </Typography>
+                    <Typography htmlTag="p" cssStyle="PARA_BOLD" margin="8px 0">
+                      $ {item.price} <span>{item.discountPercentage.toFixed()}% OFF</span>
                     </Typography>
                   </CardContent>
                 </CardCotainer>

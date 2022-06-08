@@ -14,7 +14,19 @@ const PARA = `
     line-height: 24px;
     font-weight: 400;
     letter-spacing: 0;
+    text-transform: capitalize;
+
+    span {
+        color: #f16565;
+        font-weight: 400;
+    }
 `;
+
+const PARA_BOLD = `
+    ${PARA}
+    font-weight: 700;
+`;
+
 
 const H1_REG = `
     font-size: ${pxtoRex(28)};
@@ -25,6 +37,7 @@ const H1_REG = `
 
 export const typography = {
     H3_REG,
+    PARA_BOLD,
     H1_REG,
     PARA
 }
